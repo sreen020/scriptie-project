@@ -23,9 +23,9 @@ const Expert = () => {
 
 		if (usr === userInfo.username && pass === userInfo.password) {
 			console.log('logged in as user');
-			navigate('../user', { replace: true });
+			navigate('/user', { replace: true });
 		} else if (usr === ExpertInfo.username && pass === ExpertInfo.password) {
-			navigate('../expert', { replace: true });
+			navigate('/expert', { replace: true });
 		} else {
 			setError('Wrong login credentials');
 			console.log('Wrong login credentials');
