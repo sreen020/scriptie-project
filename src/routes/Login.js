@@ -33,12 +33,12 @@ const Expert = () => {
 	};
 
 	return (
-		<div>
+		<div className="bg-primary-yellow">
 			<h1>Login</h1>
 
 			<form onSubmit={handleLogin}>
-				<input type="text" name="username" />
-				<input type="text" name="password" />
+				<input className="border" type="text" name="username" />
+				<input className="border" type="text" name="password" />
 				<button type="submit">SUBMIT</button>
 			</form>
 			<p>{error}</p>
