@@ -19,12 +19,14 @@ module.exports = {
 		colors: {
 			primary: {
 				blue: '#130160',
+				'blue-hover': '#71659E',
 				yellow: '#FCA34D',
 				violet: '#D6CDFE',
+				'violet-hover': '#D0C9DB',
 			},
 			transparent: 'transparent',
 			current: 'currentColor',
-
+			background: '#FAFAFF',
 			black: '#000',
 			white: '#fff',
 
@@ -221,8 +223,7 @@ module.exports = {
 		boxShadow: {
 			xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
 			sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-			default:
-				'0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+			default: '0px 1px 13px rgba(0, 0, 0, 0.08)',
 			md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
 			lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
 			xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
@@ -293,6 +294,7 @@ module.exports = {
 			base: '1rem',
 			lg: '1.125rem',
 			xl: '1.25rem',
+			title: '1.375rem',
 			'2xl': '1.5rem',
 			'3xl': '1.875rem',
 			'4xl': '2.25rem',

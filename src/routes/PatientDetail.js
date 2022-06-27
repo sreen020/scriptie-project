@@ -14,13 +14,28 @@ const PatientDetail = () => {
 		});
 	}, []);
 
+	console.log(patientInfo);
+
 	return (
 		<div>
 			<h1>
 				{patientInfo.firstname} {patientInfo.lastname}
 			</h1>
-			<p>Leeftijd: {patientInfo.age}</p>
+			<p>{patientInfo.age} jaar</p>
 			<p>Geslacht: {patientInfo.sex === 'm' ? 'Man' : 'Vrouw'}</p>
+
+			<p>Notities</p>
+			<p>{patientInfo.description}</p>
+
+			<p>Exercises</p>
+			{patientInfo.exercises?.map((exercise) => (
+				<article key={exercise.id} className="bg-primary-violet">
+					<h3>{exercise.name}</h3>
+					<p>{exercise.description}</p>
+					<p>{exercise.time_in_minutes} minuten</p>
+					<p>{exercise.category}</p>
+				</article>
+			))}
 		</div>
 	);
 };

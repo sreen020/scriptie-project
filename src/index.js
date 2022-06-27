@@ -9,7 +9,6 @@ import Login from './routes/Login';
 import App from './App';
 
 import { initializeApp } from 'firebase/app';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKPSYxwFW5zOUA5ZU-c1fVyr94vYPrSi0',
@@ -21,18 +20,6 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig);
-const db = getFirestore();
-const colRef = collection(db, 'patients');
-
-// getDocs(colRef).then((snapshot) => {
-// 	let patients = [];
-
-// 	snapshot.docs.forEach((doc) => {
-// 		patients.push({ ...doc.data(), id: doc.id });
-// 	});
-
-// 	console.log(patients);
-// });
 
 ReactDOM.render(
 	<BrowserRouter>
