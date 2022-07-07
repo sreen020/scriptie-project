@@ -10,7 +10,7 @@ const App = () => {
 			}}
 		>
 			<Link to="/user">Users</Link>
-			<Link to="/expert">Expert</Link>
+			<Link to="/patient-list">Expert</Link>
 		</nav>
 	);
 };

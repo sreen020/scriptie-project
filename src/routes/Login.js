@@ -7,12 +7,12 @@ const Expert = () => {
 	let navigate = useNavigate();
 
 	const userInfo = {
-		username: 'user',
+		username: 'user@gmail.com',
 		password: 'password',
 	};
 
 	const ExpertInfo = {
-		username: 'expert',
+		username: 'expert@gmail.com',
 		password: 'password',
 	};
 
@@ -27,7 +27,7 @@ const Expert = () => {
 			console.log('logged in as user');
 			navigate('/user', { replace: true });
 		} else if (usr === ExpertInfo.username && pass === ExpertInfo.password) {
-			navigate('/expert', { replace: true });
+			navigate('/patient-list', { replace: true });
 		} else {
 			setError('Wrong login credentials');
 			console.log('Wrong login credentials');
@@ -35,10 +35,13 @@ const Expert = () => {
 	};
 
 	return (
-		<section className="grid grid-cols-2 min-h-screen">
-			<article className="flex flex-col items-center justify-center">
+		<main className="grid md:grid-cols-2">
+			<section className="flex flex-col items-center justify-center px-8">
 				<div className="max-w-sm">
-					<h1 className="text-center text-4xl font-black pb-4">Welkom terug</h1>
+					<h1 className="text-6xl text-center pb-12 md:hidden text-primary-blue">
+						SO-NUTS
+					</h1>
+					<h2 className="text-center text-4xl font-black pb-4">Welkom terug</h2>
 					<p className="text-center text-text-light">
 						Log hieronder in om terug te gaan naar jouw favoriete bewegings
 						oefeningen
@@ -74,10 +77,10 @@ const Expert = () => {
 					</form>
 					<p>{error}</p>
 				</div>
-			</article>
+			</section>
 
-			<article
-				className="pt-20 rounded-l-3xl flex flex-col justify-center text-white items-center gap-16"
+			<section
+				className="pt-20 rounded-l-3xl md:flex flex-col justify-center text-white items-center gap-16 pl-8 hidden"
 				style={{
 					background:
 						'linear-gradient(270deg, rgba(66, 51, 127, 0.9) 8.85%, #130160 100%)',
@@ -95,8 +98,8 @@ const Expert = () => {
 					src="/img/screenshot.png"
 					alt="Screenshot of application"
 				/>
-			</article>
-		</section>
+			</section>
+		</main>
 	);
 };
 

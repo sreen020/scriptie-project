@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, getFirestore, addDoc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
+import PatientCard from '../components/PatientCard';
 
 const Expert = () => {
 	const [patientList, setPatientList] = useState([]);
+	const [filteredPatients, setFilteredPatients] = useState([]);
 	const db = getFirestore();
 	const colRef = collection(db, 'patients');
 
@@ -17,6 +19,7 @@ const Expert = () => {
 				});
 
 				setPatientList(patients);
+				setFilteredPatients(patients);
 				console.log('this', patients);
 			})
 			.catch((err) => {
@@ -82,27 +85,76 @@ const Expert = () => {
 		// });
 	};
 
+	const searchPatients = (e) => {
+		const value = e.target.value.toLowerCase();
+		console.log(value);
+		const filteredPatients = patientList.filter(
+			(patient) =>
+				patient.firstname.toLowerCase().includes(value) ||
+				patient.lastname.toLowerCase().includes(value) ||
+				patient.birth_date
+					.replaceAll('-', '')
+					.includes(value.replaceAll('-', ''))
+		);
+		setFilteredPatients(filteredPatients);
+		console.log(filteredPatients);
+	};
+
 	return (
-		<div>
-			<h1>Expert</h1>
-			<section className="flex">
-				{patientList ? (
-					patientList.map((patient) => (
+		<main className="p-4 sm:p-12">
+			<section className="flex flex-col sm:flex-row justify-between pb-12 gap-3">
+				<div>
+					<h1 className='className="text-center text-4xl font-black pb-4"'>
+						Overzicht patiënten
+					</h1>
+					<p className="text-xl text-primary-yellow font-medium">
+						{filteredPatients.length === 1
+							? `${filteredPatients.length} patient`
+							: `${filteredPatients.length} patienten`}
+					</p>
+				</div>
+				<input
+					className="mt-2 w-full sm:w-52 py-4 text-formtext shadow-form bg-white border-0 rounded-md px-4 h-fit text-xs"
+					type="text"
+					name="search-patient"
+					id="search-patient"
+					placeholder="Zoek patiënt..."
+					onChange={searchPatients}
+				/>
+			</section>
+			<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				{filteredPatients ? (
+					filteredPatients.map((patient) => (
 						<Link to={`/patients/${patient.id}`} key={patient.id}>
-							<article>
-								<h4>
-									{patient.firstname} {patient.lastname}
-								</h4>
-							</article>
+							<PatientCard
+								name={`${patient.firstname} ${patient.lastname}`}
+								birthDate={patient.birth_date}
+							/>
 						</Link>
 					))
 				) : (
 					<p>No data</p>
 				)}
+				{filteredPatients.length < 1 && (
+					<div className="col-span-3 text-center">
+						<img
+							className="mx-auto w-52"
+							src="/img/not-found.svg"
+							alt="Not found image"
+						/>
+						<h3 className="text-xl font-bold text-text-color">
+							Geen patiënten gevonden
+						</h3>
+						<p>
+							Voeg patiënten toe door een account te genereren voor deze
+							applicatie
+						</p>
+					</div>
+				)}
 			</section>
 
-			<button onClick={addData}>ADD DATA</button>
-		</div>
+			{/* <button onClick={addData}>ADD DATA</button> */}
+		</main>
 	);
 };
 

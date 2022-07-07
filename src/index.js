@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import User from './routes/User';
-import Expert from './routes/Expert';
+import PatientList from './routes/PatientList';
 import PatientDetail from './routes/PatientDetail';
 import Login from './routes/Login';
 import App from './App';
@@ -27,7 +27,7 @@ ReactDOM.render(
 			<Route path="login" element={<Login />} />
 			<Route path="/" element={<App />} />
 			<Route path="user" element={<User />} />
-			<Route path="expert" element={<Expert />} />
+			<Route path="patient-list" element={<PatientList />} />
 			<Route path="/patients/:patientId" element={<PatientDetail />} />
 		</Routes>
 	</BrowserRouter>,

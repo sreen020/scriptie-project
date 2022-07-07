@@ -321,6 +321,8 @@ module.exports = {
 			...theme('spacing'),
 			full: '100%',
 			screen: '100vh',
+			60: '15rem',
+			fit: 'fit-content',
 		}),
 		inset: {
 			0: '0',
@@ -474,6 +476,7 @@ module.exports = {
 			'9/12': '75%',
 			'10/12': '83.333333%',
 			'11/12': '91.666667%',
+			52: '13rem',
 			full: '100%',
 			screen: '100vw',
 		}),

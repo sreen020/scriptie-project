@@ -7,7 +7,7 @@ const PatientCard = ({ name, birthDate }) => {
 				<h2 className="text-primary-blue text-title font-medium pb-3">
 					{name}
 				</h2>
-				<p className="text-primary-yellow">{birthDate}</p>
+				<p className="text-primary-yellow font-medium">{birthDate}</p>
 			</div>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

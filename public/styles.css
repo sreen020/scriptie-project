@@ -11221,6 +11221,10 @@ video {
   height: 14rem;
 }
 
+.h-60 {
+  height: 15rem;
+}
+
 .h-64 {
   height: 16rem;
 }
@@ -11239,6 +11243,11 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .text-xs {
@@ -17141,6 +17150,10 @@ video {
 
 .w-48 {
   width: 12rem;
+}
+
+.w-52 {
+  width: 13rem;
 }
 
 .w-56 {
@@ -30863,6 +30876,10 @@ video {
     height: 14rem;
   }
 
+  .sm\:h-60 {
+    height: 15rem;
+  }
+
   .sm\:h-64 {
     height: 16rem;
   }
@@ -30881,6 +30898,11 @@ video {
 
   .sm\:h-screen {
     height: 100vh;
+  }
+
+  .sm\:h-fit {
+    height: -moz-fit-content;
+    height: fit-content;
   }
 
   .sm\:text-xs {
@@ -36783,6 +36805,10 @@ video {
 
   .sm\:w-48 {
     width: 12rem;
+  }
+
+  .sm\:w-52 {
+    width: 13rem;
   }
 
   .sm\:w-56 {
@@ -50475,6 +50501,10 @@ video {
     height: 14rem;
   }
 
+  .md\:h-60 {
+    height: 15rem;
+  }
+
   .md\:h-64 {
     height: 16rem;
   }
@@ -50493,6 +50523,11 @@ video {
 
   .md\:h-screen {
     height: 100vh;
+  }
+
+  .md\:h-fit {
+    height: -moz-fit-content;
+    height: fit-content;
   }
 
   .md\:text-xs {
@@ -56395,6 +56430,10 @@ video {
 
   .md\:w-48 {
     width: 12rem;
+  }
+
+  .md\:w-52 {
+    width: 13rem;
   }
 
   .md\:w-56 {
@@ -70087,6 +70126,10 @@ video {
     height: 14rem;
   }
 
+  .lg\:h-60 {
+    height: 15rem;
+  }
+
   .lg\:h-64 {
     height: 16rem;
   }
@@ -70105,6 +70148,11 @@ video {
 
   .lg\:h-screen {
     height: 100vh;
+  }
+
+  .lg\:h-fit {
+    height: -moz-fit-content;
+    height: fit-content;
   }
 
   .lg\:text-xs {
@@ -76007,6 +76055,10 @@ video {
 
   .lg\:w-48 {
     width: 12rem;
+  }
+
+  .lg\:w-52 {
+    width: 13rem;
   }
 
   .lg\:w-56 {
@@ -89699,6 +89751,10 @@ video {
     height: 14rem;
   }
 
+  .xl\:h-60 {
+    height: 15rem;
+  }
+
   .xl\:h-64 {
     height: 16rem;
   }
@@ -89717,6 +89773,11 @@ video {
 
   .xl\:h-screen {
     height: 100vh;
+  }
+
+  .xl\:h-fit {
+    height: -moz-fit-content;
+    height: fit-content;
   }
 
   .xl\:text-xs {
@@ -95619,6 +95680,10 @@ video {
 
   .xl\:w-48 {
     width: 12rem;
+  }
+
+  .xl\:w-52 {
+    width: 13rem;
   }
 
   .xl\:w-56 {
