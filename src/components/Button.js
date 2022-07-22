@@ -1,8 +1,10 @@
 import React from 'react';
 
-const Button = ({ type, text, icon }) => {
+const Button = ({ type, text, icon, role, action }) => {
 	return (
 		<button
+			onClick={action}
+			role={role}
 			className={
 				type === 'primary'
 					? 'flex justify-center items-center gap-1 text-white bg-primary-blue py-3 px-12 rounded-md uppercase hover:bg-primary-blue-hover border-primary-blue hover:border-primary-blue-hover border-2 hover:text-white duration-200 font-medium text-sm'

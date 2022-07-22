@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import User from './routes/User';
 import PatientList from './routes/PatientList';
 import PatientDetail from './routes/PatientDetail';
+import PatientAddExercise from './routes/PatientAddExercise';
 import Login from './routes/Login';
 import App from './App';
 
@@ -29,6 +30,10 @@ ReactDOM.render(
 			<Route path="user" element={<User />} />
 			<Route path="patient-list" element={<PatientList />} />
 			<Route path="/patients/:patientId" element={<PatientDetail />} />
+			<Route
+				path="/patients/:patientId/nieuwe-oefening"
+				element={<PatientAddExercise />}
+			/>
 		</Routes>
 	</BrowserRouter>,
 	document.getElementById('root')

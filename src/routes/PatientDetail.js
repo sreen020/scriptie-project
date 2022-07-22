@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import Button from '../components/Button';
 import PatientExercises from '../components/PatientExercises';
@@ -10,6 +10,7 @@ const PatientDetail = () => {
 	const [patientInfo, setPatientInfo] = useState([]);
 	const [activeTab, setActiveTab] = useState('one');
 	const [noteIsEditing, setNoteIsEditing] = useState(false);
+	const [noteVal, setNoteVal] = useState('');
 	const { patientId } = useParams();
 	const db = getFirestore();
 	const docRef = doc(db, 'patients', patientId);
@@ -18,17 +19,29 @@ const PatientDetail = () => {
 	useEffect(() => {
 		getDoc(docRef).then((doc) => {
 			setPatientInfo(doc.data());
+			setNoteVal(doc.data().notes);
 		});
 	}, []);
 
+	console.log(patientInfo);
 	const setSwitchButton = (num) => {
-		console.log(num);
 		setActiveTab(num);
 	};
 
 	const editNotes = () => {
 		setNoteIsEditing(true);
-		console.log(noteIsEditing);
+	};
+
+	const updateNotes = (e) => {
+		e.preventDefault();
+
+		updateDoc(docRef, {
+			notes: noteVal,
+		}).then(setNoteIsEditing(false));
+	};
+
+	const navigateAddExcercise = () => {
+		navigate(`../patients/${patientId}/nieuwe-oefening`, { replace: true });
 	};
 
 	return (
@@ -94,7 +107,7 @@ const PatientDetail = () => {
 					<h2 className="text-primary-blue text-title font-medium pb-3">
 						Oefeningen van deze patiënt
 					</h2>
-					<Button text="+ oefening" />
+					<Button text="+ oefening" action={navigateAddExcercise} />
 				</div>
 			</section>
 
@@ -123,7 +136,7 @@ const PatientDetail = () => {
 					<p className="pb-2 text-sm border-b">
 						Deze notities zijn alleen zichtbaar voor jouw
 					</p>
-					<form>
+					<form onSubmit={updateNotes}>
 						<textarea
 							readOnly={!noteIsEditing}
 							className={`${
@@ -131,11 +144,14 @@ const PatientDetail = () => {
 							} w-full h-60`}
 							name="patient_notes"
 							id="patient_notes"
-						>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt.
-						</textarea>
-						{noteIsEditing && <Button text="Opslaan" type="primary" />}
+							value={noteVal}
+							onChange={(e) => setNoteVal(e.target.value)}
+						></textarea>
+						{noteIsEditing && (
+							<div className="flex justify-between items-center">
+								<Button role="submit" text="Opslaan" type="primary" />
+							</div>
+						)}
 					</form>
 				</article>
 				<article className="col-start-2 col-span-2">

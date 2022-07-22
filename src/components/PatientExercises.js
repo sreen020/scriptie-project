@@ -9,7 +9,6 @@ const PatientExercises = () => {
 				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
 				category="legs"
 				time="01:30"
-				button={true}
 			/>
 
 			<ExerciseCard
@@ -17,7 +16,6 @@ const PatientExercises = () => {
 				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
 				category="legs"
 				time="01:30"
-				button={true}
 			/>
 
 			<ExerciseCard
@@ -25,7 +23,6 @@ const PatientExercises = () => {
 				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
 				category="legs"
 				time="01:30"
-				button={true}
 			/>
 
 			<ExerciseCard
@@ -33,7 +30,6 @@ const PatientExercises = () => {
 				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
 				category="legs"
 				time="01:30"
-				button={true}
 			/>
 
 			<ExerciseCard
@@ -41,7 +37,6 @@ const PatientExercises = () => {
 				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
 				category="legs"
 				time="01:30"
-				button={true}
 			/>
 		</section>
 	);
