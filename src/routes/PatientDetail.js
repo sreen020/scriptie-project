@@ -23,7 +23,6 @@ const PatientDetail = () => {
 		});
 	}, []);
 
-	console.log(patientInfo);
 	const setSwitchButton = (num) => {
 		setActiveTab(num);
 	};
@@ -155,7 +154,11 @@ const PatientDetail = () => {
 					</form>
 				</article>
 				<article className="col-start-2 col-span-2">
-					{activeTab === 'one' ? <PatientExercises /> : <PatientResults />}
+					{activeTab === 'one' ? (
+						<PatientExercises data={patientInfo} />
+					) : (
+						<PatientResults />
+					)}
 				</article>
 			</section>
 		</main>

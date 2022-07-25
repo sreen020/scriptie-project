@@ -17,7 +17,6 @@ const Expert = () => {
 	};
 
 	const handleLogin = (e) => {
-		console.log(e);
 		e.preventDefault();
 
 		const usr = e.target.username.value;

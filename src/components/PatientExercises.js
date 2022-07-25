@@ -1,43 +1,19 @@
 import React from 'react';
 import ExerciseCard from './ExerciseCard';
 
-const PatientExercises = () => {
+const PatientExercises = ({ data }) => {
 	return (
 		<section className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-			<ExerciseCard
-				name="Abdominal Crunches"
-				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
-				category="legs"
-				time="01:30"
-			/>
-
-			<ExerciseCard
-				name="Abdominal Crunches"
-				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
-				category="legs"
-				time="01:30"
-			/>
-
-			<ExerciseCard
-				name="Abdominal Crunches"
-				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
-				category="legs"
-				time="01:30"
-			/>
-
-			<ExerciseCard
-				name="Abdominal Crunches"
-				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
-				category="legs"
-				time="01:30"
-			/>
-
-			<ExerciseCard
-				name="Abdominal Crunches"
-				desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
-				category="legs"
-				time="01:30"
-			/>
+			{data.exercises &&
+				data.exercises.map((item) => (
+					<ExerciseCard
+						key={item.id}
+						name={item.name}
+						desc={item.description}
+						category={item.category}
+						time={item.time_in_minutes}
+					/>
+				))}
 		</section>
 	);
 };

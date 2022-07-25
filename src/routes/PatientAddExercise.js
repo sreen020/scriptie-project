@@ -7,6 +7,9 @@ import {
 	getFirestore,
 	updateDoc,
 	collection,
+	addDoc,
+	arrayUnion,
+	arrayRemove,
 } from 'firebase/firestore';
 import ExerciseCard from '../components/ExerciseCard';
 import { useNavigate } from 'react-router-dom';
@@ -36,12 +39,23 @@ const PatientAddExercise = () => {
 				});
 
 				setExercises(items);
-				console.log('asd', items);
 			})
 			.catch((err) => {
 				console.log(err.message);
 			});
 	}, []);
+
+	const handleAddButton = (exercise) => {
+		updateDoc(patientDocRef, {
+			exercises: arrayUnion(exercise),
+		}).then(navigate(`../patients/${patientId}`, { replace: true }));
+	};
+
+	const handleRemoveButton = (exercise) => {
+		updateDoc(patientDocRef, {
+			exercises: arrayRemove(exercise),
+		}).then(navigate(`../patients/${patientId}`, { replace: true }));
+	};
 
 	const setSwitchButton = (num) => {
 		setActiveTab(num);
@@ -106,34 +120,66 @@ const PatientAddExercise = () => {
 					</button>
 				</div>
 			</section>
-			<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-				{exercises ? (
-					exercises.map((exercise) => (
-						<ExerciseCard
-							name={exercise.name}
-							desc={exercise.description}
-							category={exercise.category}
-							time={exercise.time}
-							button
-						/>
-					))
-				) : (
-					<p>No data</p>
-				)}
-				{exercises.length < 1 && (
-					<div className="col-span-4 text-center">
-						<img
-							className="mx-auto w-52"
-							src="/img/not-found.svg"
-							alt="Not found image"
-						/>
-						<h3 className="text-xl font-bold text-text-color">
-							Geen Oefeningen gevonden
-						</h3>
-						<p>Pas je zoekcriteria aan om oefeningen te vinden</p>
-					</div>
-				)}
-			</section>
+			{activeTab === 'one' ? (
+				<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+					{exercises ? (
+						exercises.map((exercise) => (
+							<ExerciseCard
+								key={exercise.id}
+								name={exercise.name}
+								desc={exercise.description}
+								category={exercise.category}
+								time={exercise.time}
+								button
+								action={() => handleAddButton(exercise)}
+							/>
+						))
+					) : (
+						<p>No data</p>
+					)}
+					{exercises.length < 1 && (
+						<div className="col-span-4 text-center">
+							<img
+								className="mx-auto w-52"
+								src="/img/not-found.svg"
+								alt="Not found image"
+							/>
+							<h3 className="text-xl font-bold text-text-color">
+								Geen Oefeningen gevonden
+							</h3>
+							<p>Pas je zoekcriteria aan om oefeningen te vinden</p>
+						</div>
+					)}
+				</section>
+			) : (
+				<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+					{patientInfo.exercises ? (
+						patientInfo.exercises.map((exercise) => (
+							<ExerciseCard
+								key={exercise.id}
+								name={exercise.name}
+								desc={exercise.description}
+								category={exercise.category}
+								time={exercise.time}
+								removeButton
+								action={() => handleRemoveButton(exercise)}
+							/>
+						))
+					) : (
+						<div className="col-span-4 text-center">
+							<img
+								className="mx-auto w-52"
+								src="/img/not-found.svg"
+								alt="Not found image"
+							/>
+							<h3 className="text-xl font-bold text-text-color">
+								Geen Oefeningen gevonden
+							</h3>
+							<p>Pas je zoekcriteria aan om oefeningen te vinden</p>
+						</div>
+					)}
+				</section>
+			)}
 		</main>
 	);
 };

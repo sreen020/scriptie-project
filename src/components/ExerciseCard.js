@@ -1,7 +1,15 @@
 import React from 'react';
 import Button from './Button';
 
-const ExerciseCard = ({ name, desc, category, time, button }) => {
+const ExerciseCard = ({
+	name,
+	desc,
+	category,
+	time,
+	button,
+	removeButton,
+	action,
+}) => {
 	return (
 		<article className="flex flex-col px-6 py-5 rounded-xl bg-white shadow">
 			<h2 className="text-primary-blue text-title font-medium pb-3">{name}</h2>
@@ -12,7 +20,12 @@ const ExerciseCard = ({ name, desc, category, time, button }) => {
 				<p className="text-primary-yellow font-bold">{time}</p>
 			</div>
 
-			{button && <Button type="primary" icon={false} text="Voeg toe +" />}
+			{button && (
+				<Button type="primary" icon={false} text="Voeg toe +" action={action} />
+			)}
+			{removeButton && (
+				<Button type="remove" icon={false} text="Verwijder" action={action} />
+			)}
 		</article>
 	);
 };
