@@ -11,3 +11,12 @@ body {
 main {
 	min-height: 100vh;
 }
+
+.filter-radio:checked + label {
+	background-color: #130160;
+	color: white;
+}
+
+.filter-radio {
+	display: none;
+}

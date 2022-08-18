@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import User from './routes/User';
+import Introduction from './routes/Introduction';
 import PatientList from './routes/PatientList';
 import PatientDetail from './routes/PatientDetail';
 import PatientAddExercise from './routes/PatientAddExercise';
@@ -28,6 +29,7 @@ ReactDOM.render(
 			<Route path="login" element={<Login />} />
 			<Route path="/" element={<App />} />
 			<Route path="user" element={<User />} />
+			<Route path="introduction" element={<Introduction />} />
 			<Route path="patient-list" element={<PatientList />} />
 			<Route path="/patients/:patientId" element={<PatientDetail />} />
 			<Route

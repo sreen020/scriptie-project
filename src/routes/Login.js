@@ -24,7 +24,7 @@ const Expert = () => {
 
 		if (usr === userInfo.username && pass === userInfo.password) {
 			console.log('logged in as user');
-			navigate('/user', { replace: true });
+			navigate('/introduction', { replace: true });
 		} else if (usr === ExpertInfo.username && pass === ExpertInfo.password) {
 			navigate('/patient-list', { replace: true });
 		} else {

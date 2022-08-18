@@ -24,6 +24,8 @@ const PatientAddExercise = () => {
 	const [activeTab, setActiveTab] = useState('one');
 	const [patientInfo, setPatientInfo] = useState([]);
 	const [exercises, setExercises] = useState([]);
+	const [filteredExercises, setFilteredExercises] = useState(exercises);
+	const [exerciseCategories, setExerciseCategories] = useState([]);
 
 	useEffect(() => {
 		getDoc(patientDocRef).then((doc) => {
@@ -39,6 +41,7 @@ const PatientAddExercise = () => {
 				});
 
 				setExercises(items);
+				setFilteredExercises(items);
 			})
 			.catch((err) => {
 				console.log(err.message);
@@ -59,6 +62,23 @@ const PatientAddExercise = () => {
 
 	const setSwitchButton = (num) => {
 		setActiveTab(num);
+	};
+
+	let FilterButtonCategories = [];
+	const filterButtons = (exercises) => {
+		exercises.map((item) => {
+			FilterButtonCategories.push(item.category);
+		});
+
+		FilterButtonCategories = [...new Set(FilterButtonCategories)];
+	};
+
+	const filterExerciseOnCategory = (categoryName) => {
+		const filteredResults = exercises.filter(
+			(exercise) => exercise.category === categoryName
+		);
+
+		setFilteredExercises(filteredResults);
 	};
 
 	return (
@@ -121,36 +141,75 @@ const PatientAddExercise = () => {
 				</div>
 			</section>
 			{activeTab === 'one' ? (
-				<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-					{exercises ? (
-						exercises.map((exercise) => (
-							<ExerciseCard
-								key={exercise.id}
-								name={exercise.name}
-								desc={exercise.description}
-								category={exercise.category}
-								time={exercise.time}
-								button
-								action={() => handleAddButton(exercise)}
-							/>
-						))
-					) : (
-						<p>No data</p>
-					)}
-					{exercises.length < 1 && (
-						<div className="col-span-4 text-center">
-							<img
-								className="mx-auto w-52"
-								src="/img/not-found.svg"
-								alt="Not found image"
-							/>
-							<h3 className="text-xl font-bold text-text-color">
-								Geen Oefeningen gevonden
-							</h3>
-							<p>Pas je zoekcriteria aan om oefeningen te vinden</p>
-						</div>
-					)}
-				</section>
+				<>
+					<div className="flex gap-4 pb-10">
+						{exercises.length > 0 && filterButtons(exercises)}
+
+						<input
+							type="radio"
+							id="clear"
+							name="filter-buttons"
+							value="clear-filter"
+							className="filter-radio"
+						/>
+						<label
+							onClick={() => setFilteredExercises(exercises)}
+							for="clear"
+							className='className="flex justify-center items-center py-3 px-8 rounded-md hover:bg-primary-blue-hover text-text-light bg-mainGray duration-200 font-medium outline-none"'
+						>
+							Clear
+						</label>
+
+						{FilterButtonCategories.map((item) => (
+							<div>
+								<input
+									className="filter-radio"
+									type="radio"
+									id={item}
+									name="filter-buttons"
+									value={item}
+								/>
+								<label
+									onClick={() => filterExerciseOnCategory(item)}
+									for={item}
+									className="flex justify-center items-center py-3 px-8 rounded-md hover:bg-primary-blue-hover text-text-light bg-mainGray duration-200 font-medium outline-none"
+								>
+									{item}
+								</label>
+							</div>
+						))}
+					</div>
+					<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+						{exercises ? (
+							filteredExercises.map((exercise) => (
+								<ExerciseCard
+									key={exercise.id}
+									name={exercise.name}
+									desc={exercise.description}
+									category={exercise.category}
+									time={exercise.time}
+									button
+									action={() => handleAddButton(exercise)}
+								/>
+							))
+						) : (
+							<p>No data</p>
+						)}
+						{exercises.length < 1 && (
+							<div className="col-span-4 text-center">
+								<img
+									className="mx-auto w-52"
+									src="/img/not-found.svg"
+									alt="Not found image"
+								/>
+								<h3 className="text-xl font-bold text-text-color">
+									Geen Oefeningen gevonden
+								</h3>
+								<p>Pas je zoekcriteria aan om oefeningen te vinden</p>
+							</div>
+						)}
+					</section>
+				</>
 			) : (
 				<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 					{patientInfo.exercises ? (
