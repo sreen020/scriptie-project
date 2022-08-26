@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Button from '../components/Button';
 import PatientExercises from '../components/PatientExercises';
 import PatientResults from '../components/PatientResults';
+import BackButton from '../components/BackButton';
 import { useNavigate } from 'react-router-dom';
 
 const PatientDetail = () => {
@@ -45,31 +46,10 @@ const PatientDetail = () => {
 
 	return (
 		<main className="p-4 sm:p-12">
-			<header className="pb-4">
-				<div
-					onClick={() => navigate(-1)}
-					className="cursor-pointer flex items-center"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						className="h-4 w-4 mr-2"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-						strokeWidth={2}
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							d="M10 19l-7-7m0 0l7-7m-7 7h18"
-						/>
-					</svg>
-					<p>Pagina terug</p>
-				</div>
-			</header>
+			<BackButton />
 			<section className="grid grid-cols-3 pb-12 gap-3">
 				<div>
-					<h1 className='className="text-center text-4xl font-black pb-4"'>
+					<h1 className="text-4xl font-black pb-4">
 						{patientInfo.firstname} {patientInfo.lastname}
 					</h1>
 					<p className="text-xl text-primary-yellow font-medium">
@@ -109,7 +89,6 @@ const PatientDetail = () => {
 					<Button text="+ oefening" action={navigateAddExcercise} />
 				</div>
 			</section>
-
 			<section className="grid grid-cols-3 gap-6">
 				<article className="shadow p-8 bg-white rounded-xl h-fit">
 					<div className="flex justify-between items-center text-primary-blue">
@@ -162,22 +141,6 @@ const PatientDetail = () => {
 				</article>
 			</section>
 		</main>
-
-		/* <p>{patientInfo.age} jaar</p>
-			<p>Geslacht: {patientInfo.sex === 'm' ? 'Man' : 'Vrouw'}</p>
-
-			<p>Notities</p>
-			<p>{patientInfo.description}</p>
-
-			<p>Exercises</p>
-			{patientInfo.exercises?.map((exercise) => (
-				<article key={exercise.id} className="bg-primary-violet">
-					<h3>{exercise.name}</h3>
-					<p>{exercise.description}</p>
-					<p>{exercise.time_in_minutes} minuten</p>
-					<p>{exercise.category}</p>
-				</article>
-			))} */
 	);
 };
 

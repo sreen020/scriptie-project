@@ -101,7 +101,7 @@ const Expert = () => {
 		<main className="p-4 sm:p-12">
 			<section className="flex flex-col sm:flex-row justify-between pb-12 gap-3">
 				<div>
-					<h1 className='className="text-center text-4xl font-black pb-4"'>
+					<h1 className="text-center text-4xl font-black pb-4">
 						Overzicht patiënten
 					</h1>
 					<p className="text-xl text-primary-yellow font-medium">

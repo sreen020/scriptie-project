@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-const IntroductionPageOne = ({ buttonAction }) => {
+const IntroductionPageTwo = ({ buttonAction }) => {
 	return (
 		<section>
 			<h2 className="text-center text-4xl font-black pb-4">
@@ -26,4 +26,4 @@ const IntroductionPageOne = ({ buttonAction }) => {
 	);
 };
 
-export default IntroductionPageOne;
+export default IntroductionPageTwo;

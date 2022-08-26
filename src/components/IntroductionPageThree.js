@@ -1,7 +1,10 @@
 import React from 'react';
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
-const IntroductionPageOne = ({ buttonAction }) => {
+const IntroductionPageThree = ({ buttonAction }) => {
+	let navigate = useNavigate();
+
 	return (
 		<section>
 			<h2 className="text-center text-4xl font-black pb-4">
@@ -16,11 +19,11 @@ const IntroductionPageOne = ({ buttonAction }) => {
 				<Button
 					type="primary"
 					text="Laat mij beginnen!"
-					action={() => buttonAction('1')}
+					action={() => navigate('/overview', { replace: true })}
 				/>
 			</div>
 		</section>
 	);
 };
 
-export default IntroductionPageOne;
+export default IntroductionPageThree;

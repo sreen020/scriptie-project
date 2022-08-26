@@ -7,11 +7,11 @@ import {
 	getFirestore,
 	updateDoc,
 	collection,
-	addDoc,
 	arrayUnion,
 	arrayRemove,
 } from 'firebase/firestore';
 import ExerciseCard from '../components/ExerciseCard';
+import BackButton from '../components/BackButton';
 import { useNavigate } from 'react-router-dom';
 
 const PatientAddExercise = () => {
@@ -83,33 +83,14 @@ const PatientAddExercise = () => {
 
 	return (
 		<main className="p-4 sm:p-12">
-			<header className="pb-4">
-				<div
-					onClick={() =>
-						navigate(`../patients/${patientId}`, { replace: true })
-					}
-					className="cursor-pointer flex items-center"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						className="h-4 w-4 mr-2"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-						strokeWidth={2}
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							d="M10 19l-7-7m0 0l7-7m-7 7h18"
-						/>
-					</svg>
-					<p>Pagina terug</p>
-				</div>
-			</header>
+			<BackButton
+				customRoute={() =>
+					navigate(`../patients/${patientId}`, { replace: true })
+				}
+			/>
 			<section className="flex flex-col sm:flex-row justify-between pb-12 gap-3">
 				<div>
-					<h1 className='className="text-center text-4xl font-black pb-4"'>
+					<h1 className="text-center text-4xl font-black pb-4">
 						Wijzig oefeningen
 					</h1>
 					<p className="text-xl text-primary-yellow font-medium">
@@ -157,7 +138,7 @@ const PatientAddExercise = () => {
 							for="clear"
 							className='className="flex justify-center items-center py-3 px-8 rounded-md hover:bg-primary-blue-hover text-text-light bg-mainGray duration-200 font-medium outline-none"'
 						>
-							Clear
+							Geen filter
 						</label>
 
 						{FilterButtonCategories.map((item) => (
@@ -172,7 +153,7 @@ const PatientAddExercise = () => {
 								<label
 									onClick={() => filterExerciseOnCategory(item)}
 									for={item}
-									className="flex justify-center items-center py-3 px-8 rounded-md hover:bg-primary-blue-hover text-text-light bg-mainGray duration-200 font-medium outline-none"
+									className="capitalize flex justify-center items-center py-3 px-8 rounded-md hover:bg-primary-blue-hover text-text-light bg-mainGray duration-200 font-medium outline-none"
 								>
 									{item}
 								</label>
@@ -183,11 +164,7 @@ const PatientAddExercise = () => {
 						{exercises ? (
 							filteredExercises.map((exercise) => (
 								<ExerciseCard
-									key={exercise.id}
-									name={exercise.name}
-									desc={exercise.description}
-									category={exercise.category}
-									time={exercise.time}
+									data={exercise}
 									button
 									action={() => handleAddButton(exercise)}
 								/>
@@ -215,11 +192,7 @@ const PatientAddExercise = () => {
 					{patientInfo.exercises ? (
 						patientInfo.exercises.map((exercise) => (
 							<ExerciseCard
-								key={exercise.id}
-								name={exercise.name}
-								desc={exercise.description}
-								category={exercise.category}
-								time={exercise.time}
+								data={exercise}
 								removeButton
 								action={() => handleRemoveButton(exercise)}
 							/>
