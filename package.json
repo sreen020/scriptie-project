@@ -1,6 +1,9 @@
 {
 	"name": "react-cra-tailwindcss-boilerplate",
 	"version": "1.0.0",
+	"engines": {
+		"node": "16.14.0"
+	},
 	"author": "Sjoerd Reen",
 	"private": true,
 	"dependencies": {
