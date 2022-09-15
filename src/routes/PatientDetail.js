@@ -40,7 +40,8 @@ const PatientDetail = () => {
 		}).then(setNoteIsEditing(false));
 	};
 
-	const navigateAddExcercise = () => {
+	const navigateAddExcercise = (e) => {
+		e.stopPropagation();
 		navigate(`../patients/${patientId}/nieuwe-oefening`, { replace: true });
 	};
 
@@ -86,7 +87,7 @@ const PatientDetail = () => {
 					<h2 className="text-primary-blue text-title font-medium pb-3">
 						Oefeningen van deze patiënt
 					</h2>
-					<Button text="+ oefening" action={navigateAddExcercise} />
+					<Button text="+ oefening" action={(e) => navigateAddExcercise(e)} />
 				</div>
 			</section>
 			<section className="grid grid-cols-3 gap-6">

@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import User from './routes/User';
 import Introduction from './routes/Introduction';
 import PatientList from './routes/PatientList';
 import PatientDetail from './routes/PatientDetail';
 import UserOverview from './routes/UserOverview';
 import PatientAddExercise from './routes/PatientAddExercise';
 import ExerciseDetailPage from './routes/ExerciseDetailPage';
+import StartExercise from './routes/StartExercise';
+import EndExercise from './routes/EndExercise';
 import Login from './routes/Login';
 import App from './App';
 
@@ -29,8 +30,7 @@ ReactDOM.render(
 	<BrowserRouter>
 		<Routes>
 			<Route path="login" element={<Login />} />
-			<Route path="/" element={<App />} />
-			<Route path="user" element={<User />} />
+			<Route path="/" element={<Navigate to="/login" />} />
 			<Route path="overview" element={<UserOverview />} />
 			<Route path="introduction" element={<Introduction />} />
 			<Route path="patient-list" element={<PatientList />} />
@@ -40,6 +40,9 @@ ReactDOM.render(
 				element={<PatientAddExercise />}
 			/>
 			<Route path="/oefening/:exerciseId" element={<ExerciseDetailPage />} />
+			<Route path="/start/:exerciseId" element={<StartExercise />} />
+			<Route path="/eind/:exerciseId" element={<EndExercise />} />
+			{/* <Route path="/evaluatie/:exerciseId" element={<EvaluationUser />} /> */}
 		</Routes>
 	</BrowserRouter>,
 	document.getElementById('root')

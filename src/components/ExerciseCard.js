@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 
 const ExerciseCard = ({ data, button, removeButton, action }) => {
 	let navigate = useNavigate();
-	console.log(data);
 	return (
 		<article
 			className="flex flex-col px-6 py-5 rounded-xl bg-white shadow cursor-pointer"
-			onClick={() => navigate(`../oefening/${data.id}`, { replace: true })}
+			onClick={() => navigate(`../oefening/${data.id}`, { replace: false })}
 		>
 			<h2 className="text-primary-blue text-title font-medium pb-3">
 				{data.name}

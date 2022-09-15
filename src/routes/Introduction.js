@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
 import IntroductionPageOne from '../components/IntroductionPageOne';
 import IntroductionPageTwo from '../components/IntroductionPageTwo';
 import IntroductionPageThree from '../components/IntroductionPageThree';
 
 const Introduction = () => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const [error, setError] = useState('');
-	let navigate = useNavigate();
 
 	const handleNavigation = (num) => {
 		setCurrentPage(num);

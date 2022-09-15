@@ -25,7 +25,6 @@ const PatientAddExercise = () => {
 	const [patientInfo, setPatientInfo] = useState([]);
 	const [exercises, setExercises] = useState([]);
 	const [filteredExercises, setFilteredExercises] = useState(exercises);
-	const [exerciseCategories, setExerciseCategories] = useState([]);
 
 	useEffect(() => {
 		getDoc(patientDocRef).then((doc) => {
@@ -48,13 +47,39 @@ const PatientAddExercise = () => {
 			});
 	}, []);
 
-	const handleAddButton = (exercise) => {
+	useEffect(() => {
+		const removeSelected = exercises.filter(
+			(exercises) =>
+				!patientInfo.exercises.find((selected) => selected.id === exercises.id)
+		);
+
+		setFilteredExercises(removeSelected);
+	}, [exercises]);
+
+	// useEffect(() => {
+	// 	// console.log('exercises', exercises);
+	// 	// console.log('patientInfo.exercises', patientInfo.exercises);
+
+	// 	let array = [];
+
+	// 	patientInfo.exercises &&
+	// 		patientInfo.exercises.forEach((item) => {
+	// 			console.log(item);
+	// 			// const test = exercises.filter((exercise) => exercise.id !== item.id);
+	// 			// array.splice(test);
+	// 		});
+	// 	console.log('array', array);
+	// }, [exercises]);
+
+	const handleAddButton = (e, exercise) => {
+		e.stopPropagation();
 		updateDoc(patientDocRef, {
 			exercises: arrayUnion(exercise),
 		}).then(navigate(`../patients/${patientId}`, { replace: true }));
 	};
 
-	const handleRemoveButton = (exercise) => {
+	const handleRemoveButton = (e, exercise) => {
+		e.stopPropagation();
 		updateDoc(patientDocRef, {
 			exercises: arrayRemove(exercise),
 		}).then(navigate(`../patients/${patientId}`, { replace: true }));
@@ -106,7 +131,7 @@ const PatientAddExercise = () => {
 								: 'flex justify-center items-center gap-1 text-primary-blue bg-transparent border-primary-blue py-3 px-12 rounded-md hover:bg-primary-violet-hover  border-2 hover:text-primary-blue duration-200 font-medium text-sm h-fit rounded-r-none border-r-0 outline-none'
 						}
 					>
-						Alle oefeningen
+						Nieuwe oefeningen
 					</button>
 
 					<button
@@ -135,14 +160,14 @@ const PatientAddExercise = () => {
 						/>
 						<label
 							onClick={() => setFilteredExercises(exercises)}
-							for="clear"
+							htmlFor="clear"
 							className='className="flex justify-center items-center py-3 px-8 rounded-md hover:bg-primary-blue-hover text-text-light bg-mainGray duration-200 font-medium outline-none"'
 						>
 							Geen filter
 						</label>
 
 						{FilterButtonCategories.map((item) => (
-							<div>
+							<div key={item}>
 								<input
 									className="filter-radio"
 									type="radio"
@@ -152,7 +177,7 @@ const PatientAddExercise = () => {
 								/>
 								<label
 									onClick={() => filterExerciseOnCategory(item)}
-									for={item}
+									htmlFor={item}
 									className="capitalize flex justify-center items-center py-3 px-8 rounded-md hover:bg-primary-blue-hover text-text-light bg-mainGray duration-200 font-medium outline-none"
 								>
 									{item}
@@ -166,7 +191,8 @@ const PatientAddExercise = () => {
 								<ExerciseCard
 									data={exercise}
 									button
-									action={() => handleAddButton(exercise)}
+									action={(e) => handleAddButton(e, exercise)}
+									key={exercise.id}
 								/>
 							))
 						) : (
@@ -177,7 +203,7 @@ const PatientAddExercise = () => {
 								<img
 									className="mx-auto w-52"
 									src="/img/not-found.svg"
-									alt="Not found image"
+									alt="Not found"
 								/>
 								<h3 className="text-xl font-bold text-text-color">
 									Geen Oefeningen gevonden
@@ -194,7 +220,8 @@ const PatientAddExercise = () => {
 							<ExerciseCard
 								data={exercise}
 								removeButton
-								action={() => handleRemoveButton(exercise)}
+								action={(e) => handleRemoveButton(e, exercise)}
+								key={exercise.id}
 							/>
 						))
 					) : (
@@ -202,7 +229,7 @@ const PatientAddExercise = () => {
 							<img
 								className="mx-auto w-52"
 								src="/img/not-found.svg"
-								alt="Not found image"
+								alt="Not found"
 							/>
 							<h3 className="text-xl font-bold text-text-color">
 								Geen Oefeningen gevonden

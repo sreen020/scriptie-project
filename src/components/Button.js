@@ -7,7 +7,7 @@ const Button = ({ type, text, icon, role, action }) => {
 				<button
 					onClick={action}
 					role={role}
-					className="flex justify-center items-center gap-1 text-white bg-red-600 py-3 px-12 rounded-md uppercase hover:bg-red-400  duration-200 font-medium text-sm"
+					className="flex justify-center items-center gap-1 text-white bg-red-600 py-3 px-12 rounded-md uppercase hover:bg-red-400  duration-200 font-medium text-sm z-10"
 				>
 					{text}
 				</button>
@@ -17,8 +17,8 @@ const Button = ({ type, text, icon, role, action }) => {
 					role={role}
 					className={
 						type === 'primary'
-							? 'flex justify-center items-center gap-1 text-white bg-primary-blue py-3 px-12 rounded-md uppercase hover:bg-primary-blue-hover border-primary-blue hover:border-primary-blue-hover border-2 hover:text-white duration-200 font-medium text-sm'
-							: 'flex justify-center items-center gap-1 text-primary-blue bg-transparent border-primary-blue py-3 px-12 rounded-md uppercase hover:bg-primary-violet-hover  border-2 hover:text-primary-blue duration-200 font-medium text-sm'
+							? 'flex justify-center items-center gap-1 text-white bg-primary-blue py-3 px-12 rounded-md uppercase hover:bg-primary-blue-hover border-primary-blue hover:border-primary-blue-hover border-2 hover:text-white duration-200 font-medium text-sm z-10'
+							: 'flex justify-center items-center gap-1 text-primary-blue bg-transparent border-primary-blue py-3 px-12 rounded-md uppercase hover:bg-primary-violet-hover  border-2 hover:text-primary-blue duration-200 font-medium text-sm z-10'
 					}
 				>
 					{text}

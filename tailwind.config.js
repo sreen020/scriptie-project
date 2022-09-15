@@ -480,6 +480,7 @@ module.exports = {
 			52: '13rem',
 			full: '100%',
 			screen: '100vw',
+			fit: 'fit-content',
 		}),
 		zIndex: {
 			auto: 'auto',

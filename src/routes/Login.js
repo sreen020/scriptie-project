@@ -7,7 +7,7 @@ const Expert = () => {
 	let navigate = useNavigate();
 
 	const userInfo = {
-		username: 'user@gmail.com',
+		username: 'patient@gmail.com',
 		password: 'password',
 	};
 
