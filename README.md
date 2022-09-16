@@ -12,4 +12,14 @@ To install this project follow the following steps
 5. Start server: <br>
 `npm start`
 
+### Login credentials 
+
+**Patienten flow**<br>
+patient@gmail.com<br>
+password<br>
+<br>
+**Deskundigen flow**<br>
+expert@gmail.com<br>
+password<br>
+<br>
 At a later stage there will be a more extensive readme.
