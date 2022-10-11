@@ -10,8 +10,11 @@ import PatientAddExercise from './routes/PatientAddExercise';
 import ExerciseDetailPage from './routes/ExerciseDetailPage';
 import StartExercise from './routes/StartExercise';
 import EndExercise from './routes/EndExercise';
+import EvaluationUser from './routes/EvaluationUser';
 import Login from './routes/Login';
 import PageNotFound from './routes/PageNotFound';
+import RecommendedExercises from './routes/RecommendedExercises';
+import Progression from './routes/Progression';
 import App from './App';
 
 import { initializeApp } from 'firebase/app';
@@ -43,7 +46,12 @@ ReactDOM.render(
 			<Route path="/oefening/:exerciseId" element={<ExerciseDetailPage />} />
 			<Route path="/start/:exerciseId" element={<StartExercise />} />
 			<Route path="/eind/:exerciseId" element={<EndExercise />} />
-			{/* <Route path="/evaluatie/:exerciseId" element={<EvaluationUser />} /> */}
+			<Route path="/evaluatie/:exerciseId" element={<EvaluationUser />} />
+			<Route path="/progression" element={<Progression />} />
+			<Route
+				path="/recommended-exercises/:category"
+				element={<RecommendedExercises />}
+			/>
 			<Route path="*" element={<PageNotFound />} />
 		</Routes>
 	</BrowserRouter>,

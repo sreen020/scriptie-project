@@ -71,7 +71,11 @@ const EndExercise = () => {
 				<Button
 					type="secondary"
 					text="Evaluatie overslaan"
-					action={() => navigate('/overview', { replace: true })}
+					action={() =>
+						navigate(`/recommended-exercises/${exerciseInfo.name}`, {
+							replace: true,
+						})
+					}
 				/>
 				<Button
 					type="primary"

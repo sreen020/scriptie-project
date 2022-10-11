@@ -1,0 +1,21 @@
+section .cGTXwG *,
+section .cGTXwG,
+section .cGTXwG svg {
+	cursor: default;
+}
+
+section .cGTXwG {
+	margin: 40px;
+}
+
+section .cGTXwG svg {
+	fill: #130160;
+}
+
+section .cGTXwG svg:hover path {
+	fill: #130160;
+}
+
+section .cGTXwG svg.selected path {
+	fill: #7b87ff;
+}

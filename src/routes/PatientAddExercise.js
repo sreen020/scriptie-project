@@ -56,21 +56,6 @@ const PatientAddExercise = () => {
 		setFilteredExercises(removeSelected);
 	}, [exercises]);
 
-	// useEffect(() => {
-	// 	// console.log('exercises', exercises);
-	// 	// console.log('patientInfo.exercises', patientInfo.exercises);
-
-	// 	let array = [];
-
-	// 	patientInfo.exercises &&
-	// 		patientInfo.exercises.forEach((item) => {
-	// 			console.log(item);
-	// 			// const test = exercises.filter((exercise) => exercise.id !== item.id);
-	// 			// array.splice(test);
-	// 		});
-	// 	console.log('array', array);
-	// }, [exercises]);
-
 	const handleAddButton = (e, exercise) => {
 		e.stopPropagation();
 		updateDoc(patientDocRef, {
