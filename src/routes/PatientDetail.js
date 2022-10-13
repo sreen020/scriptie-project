@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
+import {
+	doc,
+	getDoc,
+	getFirestore,
+	updateDoc,
+	collection,
+} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import Button from '../components/Button';
 import PatientExercises from '../components/PatientExercises';
@@ -137,7 +143,7 @@ const PatientDetail = () => {
 					{activeTab === 'one' ? (
 						<PatientExercises data={patientInfo} />
 					) : (
-						<PatientResults />
+						<PatientResults data={patientInfo} />
 					)}
 				</article>
 			</section>

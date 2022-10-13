@@ -21,3 +21,7 @@ main {
 .filter-radio {
 	display: none;
 }
+
+.ReactModal__Overlay {
+	z-index: 20;
+}
