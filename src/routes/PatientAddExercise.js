@@ -133,7 +133,7 @@ const PatientAddExercise = () => {
 			</section>
 			{activeTab === 'one' ? (
 				<>
-					<div className="flex gap-4 pb-10">
+					<div className="flex gap-4 pb-10 flex-wrap">
 						{exercises.length > 0 && filterButtons(exercises)}
 
 						<input
@@ -151,8 +151,8 @@ const PatientAddExercise = () => {
 							Geen filter
 						</label>
 
-						{FilterButtonCategories.map((item) => (
-							<div key={item}>
+						{FilterButtonCategories.map((item, index) => (
+							<div key={index}>
 								<input
 									className="filter-radio"
 									type="radio"

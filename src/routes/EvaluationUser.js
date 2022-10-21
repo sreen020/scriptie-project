@@ -85,7 +85,6 @@ const EvaluationUser = () => {
 		}
 
 		let translatedSelection = [];
-		console.log(bodyparts);
 		bodyparts.forEach((item) => {
 			switch (item) {
 				case 'head':
@@ -148,6 +147,7 @@ const EvaluationUser = () => {
 			difficulty: sliderOneValue,
 			pain_indication: sliderTwoValue,
 			body_parts: translatedBodyParts,
+			body_parts_en: selectedBodyParts,
 			description: description,
 		};
 
@@ -162,9 +162,7 @@ const EvaluationUser = () => {
 
 	return (
 		<main className="p-4 sm:p-12">
-			<BackButton />
-
-			<section className="grid grid-cols-2">
+			<section className="grid grid-cols-2 gap-8">
 				<article className="">
 					<h1 className="text-4xl font-black pb-4">
 						{exerciseInfo.name} - Evaluatie
@@ -173,25 +171,37 @@ const EvaluationUser = () => {
 						Hoe heeft u deze oefening ervaren?
 					</h2>
 					<p className="text-text-light">
-						Klik op het lichaamsdeel waar u deze last heeft ervaren
-					</p>
-					<p className="font-medium">
 						Deze informatie wordt alleen gedeeld met uw deskundigen!
 					</p>
 
-					<BodyComponent
-						partsInput={bodyState}
-						onClick={(e) => showBodyPart(e)}
-					/>
-
-					{translatedBodyParts.length > 0 && (
-						<p className="text-center font-bold">U heeft geselecteerd:</p>
-					)}
-					{translatedBodyParts.map((part) => (
-						<p className="text-center text-primary-blue capitalize">{part}</p>
-					))}
+					<div className="flex justify-center items-center shadow bg-white rounded-xl mt-5">
+						<div className="flex flex-col items-center justify-center">
+							<p className="font-medium pt-8 -mb-5">
+								Klik op het lichaamsdeel waar u deze last heeft ervaren
+							</p>
+							<BodyComponent
+								partsInput={bodyState}
+								onClick={(e) => showBodyPart(e)}
+							/>
+						</div>
+						<div className="-ml-8">
+							{translatedBodyParts.length > 0 && (
+								<p className="text-center font-bold -mt-8">
+									U heeft geselecteerd:
+								</p>
+							)}
+							{translatedBodyParts.map((part, index) => (
+								<p
+									className="text-center text-primary-blue capitalize"
+									key={index}
+								>
+									{part}
+								</p>
+							))}
+						</div>
+					</div>
 				</article>
-				<article className="max-w-md flex flex-col gap-6">
+				<article className="max-w-md flex flex-col gap-6 mx-auto justify-end">
 					<div className="flex items-center">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +222,7 @@ const EvaluationUser = () => {
 						</p>
 					</div>
 
-					<div>
+					<div className="pb-6">
 						<p className="text-text-light pb-3">
 							Moeilijkheidsgraad oefening:
 							<span className="font-bold pl-2 text-lg">{sliderOneValue}</span>
@@ -228,7 +238,7 @@ const EvaluationUser = () => {
 						/>
 					</div>
 
-					<div>
+					<div className="pb-6">
 						<p className="text-text-light pb-3">
 							Last aan geselecteerde lichaamsdeel:
 							<span className="font-bold pl-2 text-lg">{sliderTwoValue}</span>
@@ -244,14 +254,28 @@ const EvaluationUser = () => {
 						/>
 					</div>
 
-					<textarea
-						name="description"
-						type="text"
-						value={description}
-						onChange={(e) => setDescription(e.target.value)}
-					></textarea>
+					<article className="shadow p-8 bg-white rounded-xl h-fit hidden md:block">
+						<div className="flex justify-between items-center text-primary-blue">
+							<h2 className="text-primary-blue text-title font-medium">
+								Beschrijving (optioneel)
+							</h2>
+						</div>
+						<p className="pb-2 text-sm border-b">
+							Deze notities zijn alleen zichtbaar voor jouw en uw deskundigen
+						</p>
+						<textarea
+							className="border p-3 mt-3 w-full h-32"
+							name="description"
+							type="text"
+							value={description}
+							placeholder="Type hier uw beschrijving"
+							onChange={(e) => setDescription(e.target.value)}
+						></textarea>
+					</article>
 
-					<Button action={handleForm} text="SUBMIT" />
+					<div className="flex justify-end pt-5">
+						<Button action={handleForm} text="Verstuur evaluatie" />
+					</div>
 				</article>
 			</section>
 		</main>

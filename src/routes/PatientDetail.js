@@ -54,7 +54,7 @@ const PatientDetail = () => {
 	return (
 		<main className="p-4 sm:p-12">
 			<BackButton />
-			<section className="grid grid-cols-3 pb-12 gap-3">
+			<section className="grid grid-cols-1 md:grid-cols-3 pb-12 gap-3">
 				<div>
 					<h1 className="text-4xl font-black pb-4">
 						{patientInfo.firstname} {patientInfo.lastname}
@@ -88,8 +88,8 @@ const PatientDetail = () => {
 					</button>
 				</div>
 			</section>
-			<section className="grid grid-cols-3 pb-4">
-				<div className="col-start-2 col-span-2 flex justify-between items-center">
+			<section className="grid grid-cols-2 md:grid-cols-3 pb-4">
+				<div className="md:col-start-2 col-span-2 flex justify-between items-center">
 					<h2 className="text-primary-blue text-title font-medium pb-3">
 						Oefeningen van deze patiënt
 					</h2>
@@ -97,7 +97,7 @@ const PatientDetail = () => {
 				</div>
 			</section>
 			<section className="grid grid-cols-3 gap-6">
-				<article className="shadow p-8 bg-white rounded-xl h-fit">
+				<article className="shadow p-8 bg-white rounded-xl h-fit hidden md:block">
 					<div className="flex justify-between items-center text-primary-blue">
 						<h2 className="text-primary-blue text-title font-medium">
 							Notities
@@ -139,7 +139,7 @@ const PatientDetail = () => {
 						)}
 					</form>
 				</article>
-				<article className="col-start-2 col-span-2">
+				<article className="md:col-start-2 col-span-3 md:col-span-2">
 					{activeTab === 'one' ? (
 						<PatientExercises data={patientInfo} />
 					) : (

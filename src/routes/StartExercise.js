@@ -79,11 +79,15 @@ const StartExercise = () => {
 	return (
 		<main className="p-4 sm:p-12">
 			<BackButton />
-			<section className="pb-12">
+			<section className="pb-12 relative z-10">
 				<h1 className="text-4xl font-black pb-4">{exerciseInfo.name}</h1>
 			</section>
 			<section className="flex flex-col justify-center items-center text-center">
-				<YouTube videoId="0tn5K9NlCfo" opts={opts} className="z-10 pb-8" />
+				<YouTube
+					videoId="0tn5K9NlCfo"
+					opts={opts}
+					className="z-10 pb-8 w-full lg:w-3/4 iframe-full-w"
+				/>
 
 				{!exerciseStarted && startsign && (
 					<>
@@ -164,7 +168,7 @@ const StartExercise = () => {
 			{!exerciseStarted ? (
 				<>
 					<svg
-						className="absolute left-0 bottom-0"
+						className="absolute left-0 bottom-0 hidden md:block"
 						width="707"
 						height="541"
 						viewBox="0 0 707 541"
@@ -250,7 +254,7 @@ const StartExercise = () => {
 			) : (
 				<>
 					<svg
-						className="absolute left-0 bottom-0"
+						className="absolute left-0 bottom-0 hidden lg:block"
 						width="1005"
 						height="834"
 						viewBox="0 0 1005 834"

@@ -53,8 +53,8 @@ const RecommendedExercises = () => {
 				<h2 className="font-bold text-xl col-span-3">
 					Soortgelijke oefeningen
 				</h2>
-				{getRelatedExercises().map((item) => (
-					<ExerciseCard data={item} key={item} />
+				{getRelatedExercises().map((item, index) => (
+					<ExerciseCard data={item} key={index} />
 				))}
 			</section>
 

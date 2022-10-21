@@ -7,7 +7,6 @@ const ResultListItem = ({ data }) => {
 
 	const toggleModal = () => {
 		setModalIsOpen(!modalIsOpen);
-		console.log('toggle', modalIsOpen);
 	};
 
 	const customStyles = {

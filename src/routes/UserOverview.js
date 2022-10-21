@@ -70,7 +70,7 @@ const UserOverview = () => {
 
 			{/* ------------------------------------------------------------------ */}
 
-			<div className="flex gap-4 pb-10">
+			<div className="flex gap-4 pb-10 flex-wrap">
 				{userInfo.exercises && filterButtons(userInfo.exercises)}
 
 				<input
@@ -88,8 +88,8 @@ const UserOverview = () => {
 					Geen filter
 				</label>
 
-				{FilterButtonCategories.map((item) => (
-					<div key={item}>
+				{FilterButtonCategories.map((item, index) => (
+					<div key={index}>
 						<input
 							className="filter-radio"
 							type="radio"
@@ -110,8 +110,8 @@ const UserOverview = () => {
 			{/* ------------------------------------------------------------------ */}
 			<section className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
 				{FilteredExercises &&
-					FilteredExercises.map((item) => (
-						<ExerciseCard data={item} key={item.id} />
+					FilteredExercises.map((item, index) => (
+						<ExerciseCard data={(item, index)} key={item.id} />
 					))}
 			</section>
 		</main>

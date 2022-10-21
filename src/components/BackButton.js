@@ -5,7 +5,7 @@ const BackButton = ({ customRoute }) => {
 	let navigate = useNavigate();
 
 	return (
-		<header className="pb-4">
+		<header className="pb-4 relative z-10">
 			<div
 				onClick={customRoute ? () => customRoute() : () => navigate(-1)}
 				className="cursor-pointer flex items-center"

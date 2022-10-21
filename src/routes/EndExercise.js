@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import Button from '../components/Button';
+import {
+	doc,
+	getDoc,
+	getFirestore,
+	addDoc,
+	collection,
+} from 'firebase/firestore';
 
 const EndExercise = () => {
 	let navigate = useNavigate();
 	const { exerciseId } = useParams();
 	const db = getFirestore();
 	const docRef = doc(db, 'exercises', exerciseId);
+	const addRef = doc(db, 'patients', 'W4G8NUCGSerost6xfJlA');
 	const [exerciseInfo, setExerciseInfo] = useState([]);
 
 	useEffect(() => {
@@ -16,9 +23,31 @@ const EndExercise = () => {
 		});
 	}, []);
 
+	const handleForm = () => {
+		var today = new Date();
+		var dd = String(today.getDate()).padStart(2, '0');
+		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		var yyyy = today.getFullYear();
+
+		today = dd + '-' + mm + '-' + yyyy;
+
+		const data = {
+			date: today,
+			name: exerciseInfo.name,
+		};
+
+		addDoc(collection(addRef, 'activity'), {
+			data,
+		}).then(
+			navigate(`../recommended-exercises/${exerciseInfo.category}`, {
+				replace: true,
+			})
+		);
+	};
+
 	return (
 		<main className="p-4 sm:p-12 flex flex-col justify-between">
-			<section className="flex flex-col justify-between">
+			<section className="flex flex-col justify-between relative z-10">
 				<h1 className="text-4xl font-black pb-4">Goed gedaan!</h1>
 
 				<article className="grid gap-6 max-w-lg pt-10">
@@ -67,15 +96,11 @@ const EndExercise = () => {
 					/>
 				</svg>
 			</div>
-			<section className="flex justify-end gap-4 py-10">
+			<section className="flex justify-end gap-4 py-10 flex-wrap">
 				<Button
 					type="secondary"
 					text="Evaluatie overslaan"
-					action={() =>
-						navigate(`/recommended-exercises/${exerciseInfo.name}`, {
-							replace: true,
-						})
-					}
+					action={handleForm}
 				/>
 				<Button
 					type="primary"
@@ -86,7 +111,7 @@ const EndExercise = () => {
 			</section>
 
 			<svg
-				className="absolute left-0 bottom-0"
+				className="absolute left-0 bottom-0 hidden lg:block"
 				width="707"
 				height="541"
 				viewBox="0 0 707 541"

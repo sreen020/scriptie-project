@@ -15,7 +15,6 @@ import Login from './routes/Login';
 import PageNotFound from './routes/PageNotFound';
 import RecommendedExercises from './routes/RecommendedExercises';
 import Progression from './routes/Progression';
-import App from './App';
 
 import { initializeApp } from 'firebase/app';
 

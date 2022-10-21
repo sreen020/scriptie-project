@@ -61,11 +61,27 @@ const Introduction = () => {
 					</p>
 				</div>
 
-				<img
-					className="ml-auto w-9/12"
-					src="/img/screenshot.png"
-					alt="Screenshot of application"
-				/>
+				{currentPage === 1 && (
+					<img
+						className="ml-auto w-full pl-12"
+						src="/img/social-proof.png"
+						alt="Screenshot of application"
+					/>
+				)}
+				{currentPage === 2 && (
+					<img
+						className="ml-auto w-9/12"
+						src="/img/screenshot.png"
+						alt="Screenshot of application"
+					/>
+				)}
+				{currentPage === 3 && (
+					<img
+						className="ml-auto w-9/12"
+						src="/img/screenshot.png"
+						alt="Screenshot of application"
+					/>
+				)}
 			</section>
 		</main>
 	);

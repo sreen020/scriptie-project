@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BodyComponent } from 'reactjs-human-body';
 import RangeSlider from 'react-range-slider-input';
 import '../styles/EvaluationUser.css';
@@ -21,16 +21,16 @@ const ModalContent = ({ handleClose, data }) => {
 			selected: false,
 		},
 		chest: {
-			selected: true,
+			selected: false,
 		},
 		stomach: {
 			selected: false,
 		},
 		left_leg: {
-			selected: true,
+			selected: false,
 		},
 		right_leg: {
-			selected: true,
+			selected: false,
 		},
 		left_hand: {
 			selected: false,
@@ -46,7 +46,11 @@ const ModalContent = ({ handleClose, data }) => {
 		},
 	});
 
-	console.log(data);
+	useEffect(() => {
+		data.body_parts_en.forEach((element) => {
+			setBodyState((bodyState[element].selected = true));
+		});
+	}, []);
 
 	return (
 		<section>

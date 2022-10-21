@@ -147,7 +147,7 @@ const Progression = () => {
 					Hoe goed ben jij bezig?
 				</h1>
 				<p className="text-text-light max-w-lg">asdasdasdasd asd</p>
-				<div className="flex items-center justify-center gap-10 py-16">
+				<div className="flex items-center justify-center gap-10 py-16 flex-wrap">
 					<article>
 						<Doughnut
 							data={DoughnutChartData}
@@ -168,7 +168,7 @@ const Progression = () => {
 				</div>
 			</section>
 
-			<section className="grid grid-cols-3 py-20">
+			<section className="grid grid-cols-1 lg:grid-cols-3 py-20">
 				<h2 className="text-right my-auto text-2xl font-black text-primary-blue">
 					Aantal oefeningen gestart <br /> per maand
 				</h2>
@@ -177,7 +177,7 @@ const Progression = () => {
 				</article>
 			</section>
 
-			<section className="grid grid-cols-2 py-20">
+			<section className="grid grid-cols-1 lg:grid-cols-2 py-20">
 				<article className="flex items-center justify-center flex-col">
 					<div>
 						<h2 className="text-left text-2xl font-black text-primary-blue">

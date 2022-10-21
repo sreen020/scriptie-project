@@ -12,6 +12,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import ExerciseCard from '../components/ExerciseCard';
+import BackButton from '../components/BackButton';
 
 const ExerciseDetailPage = () => {
 	let navigate = useNavigate();
@@ -63,12 +64,13 @@ const ExerciseDetailPage = () => {
 
 	return (
 		<main className="p-4 sm:p-12">
+			<BackButton />
 			<section className="pb-12">
 				<h1 className="text-4xl font-black pb-4">{exerciseInfo.name}</h1>
 			</section>
-			<section className="grid grid-cols-1 sm:grid-cols-2 pb-12">
-				<YouTube videoId="0tn5K9NlCfo" opts={opts} />
-				<div className="grid gap-8 px-10">
+			<section className="grid grid-cols-1 lg:grid-cols-2 pb-12">
+				<YouTube videoId="0tn5K9NlCfo" opts={opts} className="iframe-full-w" />
+				<div className="grid gap-8 px-10 pt-10 lg:pt-0">
 					<h2 className="text-text-light font-bold text-xl">
 						Uitleg {exerciseInfo.name}
 					</h2>
@@ -86,14 +88,16 @@ const ExerciseDetailPage = () => {
 				</div>
 			</section>
 
-			<section className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-				<h2 className="font-bold text-xl col-span-3">
-					Soortgelijke oefeningen
-				</h2>
-				{getRelatedExercises().map((item) => (
-					<ExerciseCard data={item} key={item} />
-				))}
-			</section>
+			{getRelatedExercises().length > 0 && (
+				<section>
+					<h2 className="font-bold text-xl">Soortgelijke oefeningen</h2>
+					<article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
+						{getRelatedExercises().map((item, index) => (
+							<ExerciseCard data={item} key={index} />
+						))}
+					</article>
+				</section>
+			)}
 		</main>
 	);
 };

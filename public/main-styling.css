@@ -25,3 +25,20 @@ main {
 .ReactModal__Overlay {
 	z-index: 20;
 }
+
+.iframe-full-w iframe {
+	width: 100%;
+}
+
+main .range-slider .range-slider__range {
+	background: #ff9228;
+}
+
+main .single-thumb .range-slider__thumb[data-lower] {
+	border: none;
+}
+
+main .range-slider .range-slider__thumb {
+	background: white;
+	border: 4px solid #ff9228;
+}

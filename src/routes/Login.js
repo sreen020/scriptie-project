@@ -28,8 +28,7 @@ const Expert = () => {
 		} else if (usr === ExpertInfo.username && pass === ExpertInfo.password) {
 			navigate('/patient-list', { replace: true });
 		} else {
-			setError('Wrong login credentials');
-			console.log('Wrong login credentials');
+			setError('Helaas zijn de ingevulde gegevens niet correct...');
 		}
 	};
 
