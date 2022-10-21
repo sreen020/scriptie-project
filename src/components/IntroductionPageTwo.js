@@ -4,15 +4,16 @@ import Button from './Button';
 const IntroductionPageTwo = ({ buttonAction }) => {
 	return (
 		<section>
-			<h2 className="text-center text-4xl font-black pb-4">
+			<h2 className="text-4xl font-black pb-4">
 				Krijg inzicht in jouw progressie
 			</h2>
 			<p className="text-text-light">
-				Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-				exercitation ullamco laboris nisi. Amet, consectetur adipiscing elit,
-				sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+				Naast de oefeningen uitvoeren is het natuurlijk belangrijk om inzicht te
+				krijgen in jouw progressie. Zo worden alle activiteiten binnen de
+				applicatie gemonitord. Deze zijn terug te vinden in het overzicht.
+			</p>
+			<p className="text-text-light pt-4">
+				Alle gegevens worden alleen gedeeld met jouw deskundigen!
 			</p>
 			<div className="flex justify-end pt-20">
 				<Button

@@ -146,7 +146,16 @@ const Progression = () => {
 				<h1 className="text-4xl font-black pb-4 text-primary-blue">
 					Hoe goed ben jij bezig?
 				</h1>
-				<p className="text-text-light max-w-lg">asdasdasdasd asd</p>
+				<p className="text-text-light max-w-lg pb-5">
+					Lichamelijke activiteit kan leeftijdsgerelateerde beperkingen
+					voorkomen of vertragen en zo ook het vermogen om zelfstandig te leven
+					verlengen.
+				</p>
+				<p className="text-text-light max-w-lg">
+					Bekijk hieronder een aantal statistieken over jouw activiteit. Zo te
+					zien ben je goed bezig. Het aantal afgeronde oefeningen ligt hoger dan
+					82% van de gebruikers.
+				</p>
 				<div className="flex items-center justify-center gap-10 py-16 flex-wrap">
 					<article>
 						<Doughnut

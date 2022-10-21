@@ -71,14 +71,14 @@ const Introduction = () => {
 				{currentPage === 2 && (
 					<img
 						className="ml-auto w-9/12"
-						src="/img/screenshot.png"
+						src="/img/screenshot-1.png"
 						alt="Screenshot of application"
 					/>
 				)}
 				{currentPage === 3 && (
 					<img
 						className="ml-auto w-9/12"
-						src="/img/screenshot.png"
+						src="/img/screenshot-2.png"
 						alt="Screenshot of application"
 					/>
 				)}

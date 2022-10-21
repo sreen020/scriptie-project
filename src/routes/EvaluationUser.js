@@ -162,7 +162,7 @@ const EvaluationUser = () => {
 
 	return (
 		<main className="p-4 sm:p-12">
-			<section className="grid grid-cols-2 gap-8">
+			<section className="grid grid-cols-1 md:grid-cols-2 gap-8">
 				<article className="">
 					<h1 className="text-4xl font-black pb-4">
 						{exerciseInfo.name} - Evaluatie
@@ -174,9 +174,9 @@ const EvaluationUser = () => {
 						Deze informatie wordt alleen gedeeld met uw deskundigen!
 					</p>
 
-					<div className="flex justify-center items-center shadow bg-white rounded-xl mt-5">
+					<div className="flex justify-center flex-wrap items-center shadow bg-white rounded-xl mt-5">
 						<div className="flex flex-col items-center justify-center">
-							<p className="font-medium pt-8 -mb-5">
+							<p className="font-medium pt-8 -mb-5 max-w-xs text-center">
 								Klik op het lichaamsdeel waar u deze last heeft ervaren
 							</p>
 							<BodyComponent

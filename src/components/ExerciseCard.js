@@ -29,7 +29,9 @@ const ExerciseCard = ({ data, button, removeButton, action }) => {
 			<p className="font-light pb-3">{data.description}</p>
 
 			<div className={`flex justify-between mt-auto ${button && 'mb-3'}`}>
-				<p className="text-primary-yellow font-bold">{data.category}</p>
+				<p className="text-primary-yellow font-bold capitalize">
+					{data.category}
+				</p>
 				<p className="text-primary-yellow font-bold flex items-center gap-1 text-sm">
 					<svg
 						fill="none"
