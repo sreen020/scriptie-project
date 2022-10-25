@@ -69,7 +69,7 @@ const ExerciseDetailPage = () => {
 				<h1 className="text-4xl font-black pb-4">{exerciseInfo.name}</h1>
 			</section>
 			<section className="grid grid-cols-1 lg:grid-cols-2 pb-12">
-				<YouTube videoId="0tn5K9NlCfo" opts={opts} className="iframe-full-w" />
+				<YouTube videoId="D_vR8V922Kw" opts={opts} className="iframe-full-w" />
 				<div className="grid gap-8 px-10 pt-10 lg:pt-0">
 					<h2 className="text-text-light font-bold text-xl">
 						Uitleg {exerciseInfo.name}
