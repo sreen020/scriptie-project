@@ -193,13 +193,13 @@ const Progression = () => {
 							Jouw top 3 Favoriete oefening
 						</h2>
 						<p className="text-xl">
-							<span className="text-3xl pr-2">1.</span> Situps
+							<span className="text-3xl pr-2">1.</span> Bovenbenen strekken
 						</p>
 						<p className="text-xl">
-							<span className="text-3xl pr-2">2.</span>Bankdrukken
+							<span className="text-3xl pr-2">2.</span>Muur push-ups
 						</p>
 						<p className="text-xl">
-							<span className="text-3xl pr-2">3.</span>Bankdrukken
+							<span className="text-3xl pr-2">3.</span>De armen buigen
 						</p>
 					</div>
 				</article>
